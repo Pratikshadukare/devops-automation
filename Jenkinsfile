@@ -1,4 +1,5 @@
 pipeline {
+     
     agent any
     tools {
         maven 'MAVEN'
@@ -24,13 +25,6 @@ pipeline {
                         sh "docker login -u pratikshabai -p ${dockerhubpwd}"
                     }
                     sh 'docker push pratikshabai/devops-integration'
-                }
-            }
-        }
-        stage('Deploy to k8s') {
-            steps {
-                script {
-                    //kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
                 }
             }
         }
